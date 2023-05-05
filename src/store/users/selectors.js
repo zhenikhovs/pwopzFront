@@ -1,4 +1,3 @@
-
-export const getCurrentUserRole = (state) => {
-    return state.userSlice.currentUser;
+export const getCurrentUser = (state) => {
+    return state.usersSlice.currentUser;
 };
