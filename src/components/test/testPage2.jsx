@@ -1,6 +1,3 @@
-import { Modal } from 'flowbite'
-
-
 const TestPage2 = () => {
 
     const register = async () => {
@@ -15,7 +12,7 @@ const TestPage2 = () => {
             "group" : "5"
         };
 
-        let res = await fetch( 'http://pwopz.devaid.ru/api/Auth.Registration', {
+        await fetch( 'http://pwopz.devaid.ru/api/Auth.Registration', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json())
@@ -30,7 +27,7 @@ const TestPage2 = () => {
             "remember" : "Y"
         };
 
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.Login', {
+        await fetch('http://pwopz.devaid.ru/api/Auth.Login', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json())
@@ -39,7 +36,7 @@ const TestPage2 = () => {
     }
 
     const logout = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.Logout', {
+        await fetch('http://pwopz.devaid.ru/api/Auth.Logout', {
             method: 'POST',
         }).then(response => response.json())
             .then(json => console.log(json))
@@ -48,7 +45,7 @@ const TestPage2 = () => {
 
 
     const info = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.GetUser', {
+        await fetch('http://pwopz.devaid.ru/api/Auth.GetUser', {
             method: 'POST'
         }).then(response => response.json())
             .then(json => console.log(json))
