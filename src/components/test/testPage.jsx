@@ -1,7 +1,6 @@
 import {Switch} from '@headlessui/react'
 import {getCurrentUser} from "../../store/users/selectors";
 import {useDispatch, useSelector} from "react-redux";
-import {setCurrentUser} from "../../store/users/slice";
 import {useState} from "react";
 import useAuthService from "../../services/AuthService";
 import useUserService from "../../services/UserService";
@@ -27,7 +26,7 @@ const TestPage = () => {
         }
 
         await logIn(data).then(res => console.log(res))
-            .catch(res => console.log(res));
+            .catch();
     }
 
     const logoutClick = async () => {
@@ -60,7 +59,7 @@ const TestPage = () => {
 
             <section className="bg-white dark:bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-                    <a href="src/components/Test/testPage#"
+                    <a href="src/components/test/testPage#"
                        className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
                        role="alert">
                         <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span>
@@ -79,7 +78,7 @@ const TestPage = () => {
                         value and drive economic growth.</p>
                     <div
                         className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                        <a href="src/components/Test/testPage#"
+                        <a href="src/components/test/testPage#"
                            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                             Learn more
                             <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -89,7 +88,7 @@ const TestPage = () => {
                                       clipRule="evenodd"></path>
                             </svg>
                         </a>
-                        <a href="src/components/Test/testPage#"
+                        <a href="src/components/test/testPage#"
                            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                             <svg className="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +102,7 @@ const TestPage = () => {
                         <span className="font-semibold text-gray-400 uppercase">FEATURED IN</span>
                         <div
                             className="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-between">
-                            <a href="src/components/Test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                            <a href="src/components/test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
                                 <svg className="h-8" viewBox="0 0 132 29" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -133,7 +132,7 @@ const TestPage = () => {
                                         fill="currentColor"/>
                                 </svg>
                             </a>
-                            <a href="src/components/Test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                            <a href="src/components/test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
                                 <svg className="h-11" viewBox="0 0 208 42" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -147,7 +146,7 @@ const TestPage = () => {
                                         fill="currentColor"/>
                                 </svg>
                             </a>
-                            <a href="src/components/Test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                            <a href="src/components/test/testPage#" className="mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
                                 <svg className="h-11" viewBox="0 0 120 41" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path

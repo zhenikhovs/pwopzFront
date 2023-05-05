@@ -1,18 +1,20 @@
 import {
-    createBrowserRouter, Link,
+    createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 
-import TestPage from "../Test/testPage";
-import TestPage2 from "../Test/testPage2";
+import TestPage from "../test/testPage";
+import TestPage2 from "../test/testPage2";
 import LoginPage from "../pages/loginPage";
-import RootPage from "../pages/rootPage";
+import RootApp from "../rootApp/rootApp";
+import TestPage3 from "../test/testPage3";
+import ErrorPage from "../pages/errorPage";
 
 function App() {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <RootPage />,
+            element: <RootApp />,
             children: [
                 {
                     path: "",
@@ -26,8 +28,17 @@ function App() {
                     path: "login",
                     element: <LoginPage />,
                 },
-            ]
+                {
+                    path: "test3",
+                    element: <TestPage3 />,
+                },
+                {
+                    path: '*',
+                    element: <ErrorPage/>,
+                }
+            ],
         },
+
 
 
     ]);

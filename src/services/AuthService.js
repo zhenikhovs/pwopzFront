@@ -5,8 +5,8 @@ const useAuthService = () => {
             body: JSON.stringify(data)
         }).then(response => response.json());
 
-        if(res.status === 'error') throw await res.errormessage;
-        return res;
+        if(res.status === 'error') throw await res.error_message;
+        return res.result;
     }
 
     const logOut = async () => {
@@ -14,8 +14,8 @@ const useAuthService = () => {
             method: 'GET'
         }).then(response => response.json());
 
-        if(res.status === 'error') throw await res.errormessage;
-        return res;
+        if(res.status === 'error') throw await res.error_message;
+        return res.result;
     }
 
     return {logIn, logOut}

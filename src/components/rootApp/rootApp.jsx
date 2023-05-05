@@ -1,7 +1,7 @@
 import AppHeader from "../header/appHeader";
 import {Outlet} from "react-router-dom";
 
-const RootPage = () => {
+const RootApp = () => {
     return(
         <>
             <AppHeader/>
@@ -12,4 +12,4 @@ const RootPage = () => {
     );
 }
 
-export default RootPage;
+export default RootApp;

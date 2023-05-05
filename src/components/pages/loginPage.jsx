@@ -1,21 +1,28 @@
 import InputAuth from "../inputs/inputAuth";
 import useAuthService from "../../services/AuthService";
 import {useState} from "react";
+import {setCurrentUser} from "../../store/users/slice";
+import {useDispatch} from "react-redux";
 
 const LoginPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
-    const {logIn, logOut} = useAuthService();
+    const dispatch = useDispatch();
+
+    const {logIn} = useAuthService();
+
 
     const logInClick = async (e) => {
         e.preventDefault();
+
         const data = {
             login,
             password
         }
 
-        await logIn(data).then(res => console.log(res))
+        await logIn(data)
+            .then(res => dispatch(setCurrentUser(res.user)))
             .catch(res => console.log(res));
     }
 
