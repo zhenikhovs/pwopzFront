@@ -5,6 +5,8 @@ import {getCurrentUser} from "../../store/users/selectors";
 import useAuthService from "../../services/AuthService";
 import {setCurrentUser} from "../../store/users/slice";
 
+import logo from "../../resourses/logo.png";
+
 const AppHeader = () => {
     const dispatch = useDispatch();
     const user = useSelector(getCurrentUser);
@@ -21,9 +23,9 @@ const AppHeader = () => {
     return (
         <header>
             <Navbar fluid={true} rounded={true}>
-                <Navbar.Brand href="https://flowbite.com/">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+                <Navbar.Brand href="/">
+                    <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
+                    {/*<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">УПДОС</span>*/}
                 </Navbar.Brand>
 
                 {user ? <>
