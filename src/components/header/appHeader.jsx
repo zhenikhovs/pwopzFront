@@ -25,65 +25,69 @@ const AppHeader = () => {
                     <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
                 </Navbar.Brand>
-                <div className="flex md:order-2">
 
-                    <Dropdown arrowIcon={true} inline={true} label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>}>
-                        <Dropdown.Header>
+                {user ? <>
+                    <div className="flex md:order-2">
+
+                        <Dropdown arrowIcon={false} inline={true} label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>}>
+                            <Dropdown.Header>
                             <span className="block text-sm">
                                 {user? user.name + ' ' + user.last_name : ''}
                             </span>
-                            <span className="block truncate text-sm font-medium">
+                                <span className="block truncate text-sm font-medium">
                                {user? user.email : ''}
                             </span>
-                        </Dropdown.Header>
+                            </Dropdown.Header>
 
-                        <Dropdown.Item>
-                            Личный кабинет
-                        </Dropdown.Item>
+                            <Dropdown.Item>
+                                Личный кабинет
+                            </Dropdown.Item>
 
-                        <Dropdown.Item>
-                            Статистика
-                        </Dropdown.Item>
+                            <Dropdown.Item>
+                                Статистика
+                            </Dropdown.Item>
 
-                        <Dropdown.Divider/>
+                            <Dropdown.Divider/>
 
-                        {
-                            user?
-                        <Dropdown.Item onClick={logOutClick}>
-                            Sign out
-                        </Dropdown.Item>
-                                : null
-                        }
+                            {
+                                user?
+                                    <Dropdown.Item onClick={logOutClick}>
+                                        Sign out
+                                    </Dropdown.Item>
+                                    : null
+                            }
 
 
-                    </Dropdown>
+                        </Dropdown>
 
-                    <Navbar.Toggle/>
+                        <Navbar.Toggle/>
 
-                </div>
+                    </div>
 
-                <Navbar.Collapse>
-                    <Link to={'/'}>
-                        Главная
-                    </Link>
-                    <Link to={'login'}>
-                        Логин
-                    </Link>
-                    <Link to={'test'}>
-                        Тест
-                    </Link>
-                    <Link to={'test2'}>
-                        Тест2
-                    </Link>
-                    <Link to={'test3'}>
-                        Тест3
-                    </Link>
-                    <Link to={'lalalalalal'}>
-                        Страница ошибки
-                    </Link>
+                    <Navbar.Collapse>
+                        <Link to={'/'}>
+                            Главная
+                        </Link>
+                        <Link to={'login'}>
+                            Логин
+                        </Link>
+
+                        <Link to={'test'}>
+                            Тест
+                        </Link>
+                        <Link to={'test2'}>
+                            Тест2
+                        </Link>
+                        <Link to={'test3'}>
+                            Тест3
+                        </Link>
+                        <Link to={'lalalalalal'}>
+                            Страница ошибки
+                        </Link>
                 </Navbar.Collapse>
-            </Navbar>
+                </> : null}
 
+            </Navbar>
         </header>
     );
 }

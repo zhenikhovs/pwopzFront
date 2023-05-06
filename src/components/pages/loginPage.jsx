@@ -1,8 +1,11 @@
-import InputAuth from "../inputs/inputAuth";
-import useAuthService from "../../services/AuthService";
 import {useState} from "react";
 import {setCurrentUser} from "../../store/users/slice";
 import {useDispatch} from "react-redux";
+
+import {Button} from "flowbite-react";
+
+import InputAuth from "../inputs/inputAuth";
+import useAuthService from "../../services/AuthService";
 
 const LoginPage = () => {
     const [login, setLogin] = useState('');
@@ -22,14 +25,21 @@ const LoginPage = () => {
         }
 
         await logIn(data)
-            .then(res => dispatch(setCurrentUser(res.user)))
+            .then(res => dispatch(setCurrentUser(res.user?res.user:null)))
             .catch(res => console.log(res));
+    }
+
+    const insertClick = () => {
+        setLogin('testik26');
+        setPassword('testik');
     }
 
     return (
         <>
-            <div className="flex w-full h-screen justify-center items-center">
-                <div className="w-[500px] p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+            <div className="flex w-full h-screen justify-center items-center ">
+                <div className="w-[500px] p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 relative">
+                    <Button className={'absolute top-0 right-0'} onClick={insertClick}>Testik</Button>
+
                     <div
                         className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -37,7 +47,7 @@ const LoginPage = () => {
                         </h3>
                     </div>
 
-                    <form className='flex flex-col' action="#" onSubmit={logInClick}>
+                    <form className='flex flex-col' onSubmit={logInClick}>
                         <div className="flex flex-col gap-4 mb-4 sm:grid-cols-2">
                             <InputAuth inputLabel={'Логин'} inputName={'login'} inputType={'text'}
                                        value={login}
@@ -54,7 +64,6 @@ const LoginPage = () => {
                         </div>
                     </form>
                 </div>
-
             </div>
         </>
     )

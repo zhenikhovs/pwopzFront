@@ -1,7 +1,7 @@
-import AppHeader from "../header/appHeader";
 import {Outlet} from "react-router-dom";
+import AppHeader from "../header/appHeader";
 
-const RootApp = () => {
+const LoginApp = () => {
     return(
         <>
             <AppHeader/>
@@ -12,4 +12,4 @@ const RootApp = () => {
     );
 }
 
-export default RootApp;
+export default LoginApp;

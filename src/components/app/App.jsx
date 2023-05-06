@@ -6,11 +6,26 @@ import {
 import TestPage from "../test/testPage";
 import TestPage2 from "../test/testPage2";
 import LoginPage from "../pages/loginPage";
-import RootApp from "../rootApp/rootApp";
+import RootApp from "../appContainers/rootApp";
 import TestPage3 from "../test/testPage3";
 import ErrorPage from "../pages/errorPage";
+import LoginApp from "../appContainers/loginApp";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import useUserService from "../../services/UserService";
+import {setCurrentUser} from "../../store/users/slice";
 
 function App() {
+    const {getUser}  = useUserService();
+
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        console.log('main')
+        getUser().then(res => dispatch(setCurrentUser(res.user?res.user:null)))
+            .catch(res => console.log(res));
+    }, [])
+
     const router = createBrowserRouter([
         {
             path: "/",
@@ -25,8 +40,8 @@ function App() {
                     element: <TestPage />,
                 },
                 {
-                    path: "login",
-                    element: <LoginPage />,
+                    path: "test2",
+                    element: <TestPage2 />,
                 },
                 {
                     path: "test3",
@@ -37,6 +52,16 @@ function App() {
                     element: <ErrorPage/>,
                 }
             ],
+        },
+        {
+            path: "login",
+            element: <LoginApp />,
+            children: [
+                {
+                    path: "",
+                    element: <LoginPage/>,
+                },
+            ]
         },
 
 
