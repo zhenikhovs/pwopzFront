@@ -68,20 +68,20 @@ const AppHeader = () => {
                         <Link to={'/'}>
                             Главная
                         </Link>
-                        <Link to={'login'}>
+                        <Link to={'/login'}>
                             Логин
                         </Link>
 
-                        <Link to={'test'}>
+                        <Link to={'/test'}>
                             Тест
                         </Link>
-                        <Link to={'test2'}>
+                        <Link to={'/test2'}>
                             Тест2
                         </Link>
-                        <Link to={'test3'}>
+                        <Link to={'/test3'}>
                             Тест3
                         </Link>
-                        <Link to={'lalalalalal'}>
+                        <Link to={'/lalalalalal'}>
                             Страница ошибки
                         </Link>
                 </Navbar.Collapse>

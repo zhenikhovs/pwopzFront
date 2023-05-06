@@ -1,18 +1,18 @@
 import {Navigate, useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {getCurrentUser} from "../../store/users/selectors";
+import {useDispatch} from "react-redux";
+import {setCurrentUser} from "../../store/users/slice";
 
 
-const RequireAuth = ({children}) => {
+const RequireAuth = ({user, children}) => {
     const location = useLocation();
-    const user = useSelector(getCurrentUser);
+    const dispatch = useDispatch();
 
     if(!user){
         return <Navigate to='/login' state={{from: location}}/>
+    } else {
+        dispatch(setCurrentUser(user))
+        return children;
     }
-
-    return children;
-
 }
 
 export default RequireAuth

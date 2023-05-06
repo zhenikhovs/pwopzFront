@@ -6,10 +6,15 @@ import {Button} from "flowbite-react";
 
 import InputAuth from "../inputs/inputAuth";
 import useAuthService from "../../services/AuthService";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const fromPage = location.state?.from?.pathname || '/';
 
     const dispatch = useDispatch();
 
@@ -25,7 +30,7 @@ const LoginPage = () => {
         }
 
         await logIn(data)
-            .then(res => dispatch(setCurrentUser(res.user?res.user:null)))
+            .then(res => dispatch(setCurrentUser(res.user?res.user:null))).then(()=>navigate(fromPage, {replace: true}))
             .catch(res => console.log(res));
     }
 
