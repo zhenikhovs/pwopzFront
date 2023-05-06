@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Avatar, Dropdown, Navbar} from "flowbite-react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUser} from "../../store/users/selectors";
@@ -11,12 +11,13 @@ const AppHeader = () => {
     const dispatch = useDispatch();
     const user = useSelector(getCurrentUser);
 
-    const {logOut} = useAuthService();
+    const navigate = useNavigate();
 
+    const {logOut} = useAuthService();
 
     const logOutClick = async () => {
         await logOut()
-            .then(res => dispatch(setCurrentUser(null)))
+            .then(res => dispatch(setCurrentUser(null))).then(()=>navigate('/login'))
             .catch(res => console.log(res));
     }
 
