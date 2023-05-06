@@ -1,5 +1,5 @@
 import {
-    createBrowserRouter,
+    createBrowserRouter, Outlet,
     RouterProvider,
 } from "react-router-dom";
 
@@ -14,6 +14,8 @@ import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import useUserService from "../../services/UserService";
 import {setCurrentUser} from "../../store/users/slice";
+import AppHeader from "../header/appHeader";
+import RequireAuth from "../requireAuth/requireAuth";
 
 function App() {
     const {getUser}  = useUserService();
@@ -69,9 +71,13 @@ function App() {
     ]);
 
     return (
-        <>
-            <RouterProvider router={router}/>
-        </>
+        <RouterProvider router={router}>
+            <AppHeader/>
+                <RequireAuth>
+                    <Outlet/>
+                </RequireAuth>
+        </RouterProvider>
+
     );
 }
 
