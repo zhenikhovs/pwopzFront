@@ -9,11 +9,11 @@ export async function RootLoader() {
     let user = await getUser().then(res => res.user? res.user : null)
         .catch(res => console.log(res));
 
-    // const userForLocal = {
-    //     name: 'Костыль',
-    //     last_name: 'Костылев',
-    //     email: 'kostilev@mail.ru'};
-    // user = user? user : userForLocal;
+    const userForLocal = {
+        name: 'Костыль',
+        last_name: 'Костылев',
+        email: 'kostilev@mail.ru'};
+    user = user? user : userForLocal;
 
     return {user};
 

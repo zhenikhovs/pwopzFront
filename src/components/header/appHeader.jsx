@@ -32,15 +32,15 @@ const AppHeader = () => {
                 {user ? <>
                     <div className="flex md:order-2">
 
-                        <Dropdown arrowIcon={false} inline={true} label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true}/>}>
-                            <Dropdown.Header>
-                            <span className="block text-sm">
-                                {user? user.name + ' ' + user.last_name : ''}
-                            </span>
-                                <span className="block truncate text-sm font-medium">
-                               {user? user.email : ''}
-                            </span>
-                            </Dropdown.Header>
+                        <Dropdown arrowIcon={true} inline={true} label={<span className="self-center ">{user? user.name + ' ' + user.last_name : ''}</span>}>
+                            {/*<Dropdown.Header>*/}
+                            {/*<span className="block text-sm">*/}
+                            {/*    {user? user.name + ' ' + user.last_name : ''}*/}
+                            {/*</span>*/}
+                            {/*    <span className="block truncate text-sm font-medium">*/}
+                            {/*   {user? user.email : ''}*/}
+                            {/*</span>*/}
+                            {/*</Dropdown.Header>*/}
 
                             <Dropdown.Item>
                                 Личный кабинет
