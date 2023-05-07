@@ -22,7 +22,7 @@ const AppHeader = () => {
     }
 
     return (
-        <header>
+        <header className={'h-max border-b'}>
             <Navbar fluid={true} rounded={true}>
                 <Navbar.Brand href="/">
                     <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
@@ -33,17 +33,10 @@ const AppHeader = () => {
                     <div className="flex md:order-2">
 
                         <Dropdown arrowIcon={true} inline={true} label={<span className="self-center ">{user? user.name + ' ' + user.last_name : ''}</span>}>
-                            {/*<Dropdown.Header>*/}
-                            {/*<span className="block text-sm">*/}
-                            {/*    {user? user.name + ' ' + user.last_name : ''}*/}
-                            {/*</span>*/}
-                            {/*    <span className="block truncate text-sm font-medium">*/}
-                            {/*   {user? user.email : ''}*/}
-                            {/*</span>*/}
-                            {/*</Dropdown.Header>*/}
-
                             <Dropdown.Item>
-                                Личный кабинет
+                                <Link to={'/profile'}>
+                                    Личный кабинет
+                                </Link>
                             </Dropdown.Item>
 
                             <Dropdown.Item>

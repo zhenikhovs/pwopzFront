@@ -8,8 +8,11 @@ const RootApp = () => {
     return(
         <>
             <AppHeader/>
+
             <RequireAuth user={user}>
-                <Outlet/>
+                <main className="px-2 py-8 sm:px-4">
+                    <Outlet/>
+                </main>
             </RequireAuth>
         </>
     );

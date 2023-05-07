@@ -8,7 +8,7 @@ const LoginApp = () => {
 
     return(
         <>
-        <AppHeader/>
+            <AppHeader/>
             {!user ?
                 <main>
                     <Outlet/>

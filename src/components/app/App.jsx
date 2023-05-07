@@ -11,6 +11,9 @@ import TestPage3 from "../test/testPage3";
 import ErrorPage from "../pages/errorPage";
 import LoginApp from "../appContainers/loginApp";
 import {RootLoader} from "../routerLoaders/rootLoader";
+import ProfilePage from "../pages/profilePage";
+import ProfileStatistics from "../pages/profileStatisticPage";
+import ProfileContainer from "../appContainers/profileContainer";
 
 function App() {
 
@@ -35,6 +38,21 @@ function App() {
                     path: "test3",
                     element: <TestPage3 />,
                 },
+                {
+                    path: 'profile',
+                    element: <ProfileContainer />,
+                    children: [
+                        {
+                            path: "",
+                            element: <ProfilePage />,
+                        },
+                        {
+                            path: "statistics",
+                            element: <ProfileStatistics />,
+                        },
+                    ]
+                },
+
                 {
                     path: '*',
                     element: <ErrorPage/>,
