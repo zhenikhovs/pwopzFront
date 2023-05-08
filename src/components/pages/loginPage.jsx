@@ -12,6 +12,9 @@ const LoginPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
+    const [error, setError] = useState('');
+    const [isError, setIsError] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
     const fromPage = location.state?.from?.pathname || '/';
@@ -30,19 +33,23 @@ const LoginPage = () => {
         }
 
         await logIn(data)
-            .then(res => dispatch(setCurrentUser(res.user?res.user:null))).then(()=>navigate(fromPage, {replace: true}))
-            .catch(res => console.log(res));
+            .then(res => dispatch(setCurrentUser(res.user?res.user:null)))
+            .then(()=>navigate(fromPage, {replace: true}))
+            .catch(res => {
+                setError(res.replace('<br>', ' '))
+                setIsError(true)
+            });
     }
 
     const insertClick = () => {
-        setLogin('testik26');
-        setPassword('testik');
+        setLogin('sirzh');
+        setPassword('123456');
     }
 
     return (
         <>
             <div className="flex w-full h-screen justify-center items-center ">
-                <div className="w-[500px] p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 relative">
+                <div className="w-[500px]  p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 relative">
                     <Button className={'absolute top-0 right-0'} onClick={insertClick}>Testik</Button>
 
                     <div
@@ -68,6 +75,12 @@ const LoginPage = () => {
                             </button>
                         </div>
                     </form>
+
+                    <div
+                        className={isError?"p-4 mt-8 text-sm text-red-800 rounded-lg bg-red-50" : 'hidden'}
+                        role="alert">
+                        <span className="font-medium">Ошибка!</span> {error}
+                    </div>
                 </div>
             </div>
         </>

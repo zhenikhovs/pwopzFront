@@ -31,7 +31,6 @@ const ProfilePage = () => {
     const [isSuccess, setIsSuccess] = useState(false);
 
 
-
     const {updateUser, updateUserPassword} = useUserService();
 
     const updateUserClick = async (e) => {
@@ -53,7 +52,7 @@ const ProfilePage = () => {
             })
             .then(res => setEdited(false))
             .catch(res => {
-                setError(res)
+                setError(res.replace('<br>', ' '))
                 setIsError(true)
             })
     }
@@ -79,9 +78,15 @@ const ProfilePage = () => {
                 setConfirm_password('');
             })
             .catch(res => {
-                setError(res)
+                setError(res.replace('<br>', ' '))
                 setIsError(true)
             })
+    }
+
+    const cancelClick = () => {
+        setEdited(false)
+        setPasswordEdited(false)
+        setIsError(false)
     }
 
     return (
@@ -146,7 +151,7 @@ const ProfilePage = () => {
                                            className="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
                                        Сохранить изменения
                                    </button>
-                                   <button onClick={()=> setEdited(false)} type="button"
+                                   <button onClick={cancelClick} type="button"
                                            className="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                                        Отменить
                                    </button>
@@ -183,7 +188,7 @@ const ProfilePage = () => {
                                    className="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none ">
                                Сохранить пароль
                            </button>
-                           <button onClick={()=> setPasswordEdited(value => !value)} type="button"
+                           <button onClick={cancelClick} type="button"
                                    className="w-full text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                                Отменить
                            </button>
