@@ -24,10 +24,10 @@ const AppHeader = () => {
     return (
         <header className={'h-max border-b'}>
             <Navbar fluid={true} rounded={true}>
-                <Navbar.Brand href="/">
+                <Link to="/">
                     <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
                     {/*<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">УПДОС</span>*/}
-                </Navbar.Brand>
+                </Link>
 
                 {user ? <>
                     <div className="flex md:order-2">
