@@ -1,4 +1,4 @@
-import useUserService from "../../services/UserService";
+import useUserService from "../../services/userService";
 import {setCurrentUser} from "../../store/users/slice";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUser} from "../../store/users/selectors";

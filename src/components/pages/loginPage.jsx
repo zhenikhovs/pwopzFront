@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {Button} from "flowbite-react";
 
 import InputAuth from "../inputs/inputAuth";
-import useAuthService from "../../services/AuthService";
+import useAuthService from "../../services/authService";
 import {useLocation, useNavigate} from "react-router-dom";
 
 const LoginPage = () => {

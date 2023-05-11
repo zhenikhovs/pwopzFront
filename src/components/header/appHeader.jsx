@@ -2,7 +2,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {Avatar, Dropdown, Navbar} from "flowbite-react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentUser} from "../../store/users/selectors";
-import useAuthService from "../../services/AuthService";
+import useAuthService from "../../services/authService";
 import {setCurrentUser} from "../../store/users/slice";
 
 import logo from "../../resourses/logo.png";
@@ -26,13 +26,12 @@ const AppHeader = () => {
             <Navbar fluid={true} rounded={true}>
                 <Link to="/">
                     <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
-                    {/*<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">УПДОС</span>*/}
                 </Link>
 
                 {user ? <>
                     <div className="flex md:order-2">
 
-                        <Dropdown arrowIcon={true} inline={true} label={<span className="self-center ">{user? user.name + ' ' + user.last_name : ''}</span>}>
+                        <Dropdown arrowIcon={true} inline={true} label={<span className="self-center text-primary-800">{user? user.name + ' ' + user.last_name : ''}</span>}>
                             <Dropdown.Item>
                                 <Link to={'/profile'}>
                                     Личный кабинет
@@ -40,7 +39,9 @@ const AppHeader = () => {
                             </Dropdown.Item>
 
                             <Dropdown.Item>
-                                Статистика
+                                <Link to={'/profile/statistics'}>
+                                    Статистика
+                                </Link>
                             </Dropdown.Item>
 
                             <Dropdown.Divider/>
@@ -52,7 +53,6 @@ const AppHeader = () => {
                                     </Dropdown.Item>
                                     : null
                             }
-
 
                         </Dropdown>
 
@@ -67,20 +67,22 @@ const AppHeader = () => {
                         <Link to={'/login'}>
                             Логин
                         </Link>
-
-                        <Link to={'/test'}>
-                            Тест
+                        <Link to={'/courses'}>
+                            Курсы
                         </Link>
-                        <Link to={'/test2'}>
-                            Тест2
-                        </Link>
-                        <Link to={'/test3'}>
-                            Тест3
-                        </Link>
+                        {/*<Link to={'/test'}>*/}
+                        {/*    Тест*/}
+                        {/*</Link>*/}
+                        {/*<Link to={'/test2'}>*/}
+                        {/*    Тест2*/}
+                        {/*</Link>*/}
+                        {/*<Link to={'/test3'}>*/}
+                        {/*    Тест3*/}
+                        {/*</Link>*/}
                         <Link to={'/lalalalalal'}>
                             Страница ошибки
                         </Link>
-                </Navbar.Collapse>
+                    </Navbar.Collapse>
                 </> : null}
 
             </Navbar>

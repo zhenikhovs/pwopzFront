@@ -14,6 +14,12 @@ import {RootLoader} from "../routerLoaders/rootLoader";
 import ProfilePage from "../pages/profilePage";
 import ProfileStatistics from "../pages/profileStatisticPage";
 import ProfileContainer from "../appContainers/profileContainer";
+import CoursesPage from "../pages/coursesPage";
+import {CoursesLoader} from "../routerLoaders/coursesLoader";
+import {CourseLoader} from "../routerLoaders/courseLoader";
+import CoursePage from "../pages/coursePage";
+import ModulePage from "../pages/modulePage";
+import {ModuleLoader} from "../routerLoaders/moduleLoader";
 
 function App() {
 
@@ -25,6 +31,21 @@ function App() {
                 {
                     path: "",
                     element: <>Hello< />,
+                },
+                {
+                    path: "courses",
+                    element: <CoursesPage />,
+                    loader: CoursesLoader
+                },
+                {
+                    path: "courses/:id",
+                    element: <CoursePage />,
+                    loader: CourseLoader
+                },
+                {
+                    path: "courses/:id/:module_id",
+                    element: <ModulePage />,
+                    loader: ModuleLoader
                 },
                 {
                     path: "test",

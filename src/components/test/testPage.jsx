@@ -2,8 +2,8 @@ import {Switch} from '@headlessui/react'
 import {getCurrentUser} from "../../store/users/selectors";
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import useAuthService from "../../services/AuthService";
-import useUserService from "../../services/UserService";
+import useAuthService from "../../services/authService";
+import useUserService from "../../services/userService";
 
 
 

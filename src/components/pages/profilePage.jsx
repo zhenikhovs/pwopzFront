@@ -1,13 +1,9 @@
 import {setCurrentUser} from "../../store/users/slice";
 import {useDispatch, useSelector} from "react-redux";
 
-import {Button} from "flowbite-react";
-
-import useAuthService from "../../services/AuthService";
-import {Link, useLocation, useNavigate} from "react-router-dom";
 import {getCurrentUser} from "../../store/users/selectors";
 import {useState} from "react";
-import useUserService from "../../services/UserService";
+import useUserService from "../../services/userService";
 
 const ProfilePage = () => {
     const user = useSelector(getCurrentUser);
@@ -91,7 +87,7 @@ const ProfilePage = () => {
 
     return (
        <div className={'flex flex-col w-max gap-y-8 w-[638px]'}>
-           <div className={'font-bold text-2xl text-primary-800'}>
+           <div className={'font-bold text-3xl text-primary-800'}>
                {edited||passwordEdited? 'Изменение личных данных' : 'Личный кабинет'}
            </div>
            <hr/>
