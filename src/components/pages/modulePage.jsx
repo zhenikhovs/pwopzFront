@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {Link, useLoaderData} from "react-router-dom";
+import getBlockContent from "../moduleBlocks/moduleBlockController";
 
 
 const ModulePage = () => {
@@ -14,12 +15,14 @@ const ModulePage = () => {
 
     function renderModuleContent() {
         if(blocks){
-            blocks.blocks.map(block =>{
-                return
+            blocks = JSON.parse(blocks).blocks;
+            console.log(blocks)
+            return blocks.map(block =>{
+                return getBlockContent(block);
             })
 
         } else{
-            return <div className={'text-xl'}>Контент модуля отсутствует &#128546;</div>
+            return <div className={'text-xl flex items-center justify-center h-[100px] bg-[#dadada80]'}>Контент модуля отсутствует &#128546;</div>
         }
     }
 
@@ -71,8 +74,9 @@ const ModulePage = () => {
                     }
             </div>
             <hr/>
-
-            {moduleContent}
+            <div className="flex flex-col gap-y-8">
+                {moduleContent}
+            </div>
         </div>
     )
 }

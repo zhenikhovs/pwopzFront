@@ -47,7 +47,7 @@ const CoursePage = () => {
             <hr/>
             {
                 modules.length > 0 ?
-                    <div className={'flex flex-col gap-y-2'}>
+                    <div className={'flex flex-col gap-y-4'}>
                         <div className="font-bold text-2xl text-primary-700">Структура курса:</div>
                         <div className={'course_structure flex flex-col text-xl pl-5' }>
                             <ol className={'space-y-1'}>{structure}</ol>

@@ -1,9 +1,5 @@
 const useModuleService = () => {
-    const getModule = async (module_id) => {
-        const data = {
-            module_id
-        }
-
+    const getModule = async (data) => {
         let res = await fetch('http://pwopz.devaid.ru/api/Module.GetModule', {
             method: 'POST',
             body: JSON.stringify(data)
