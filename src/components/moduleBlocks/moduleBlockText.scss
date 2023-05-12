@@ -1,0 +1,51 @@
+.block_text_content{
+
+  p{
+    text-indent: 16px;
+  }
+  ul li{
+    list-style-position: inside;
+    list-style-type: disc;
+  }
+
+  ol li{
+    list-style-position: inside;
+    list-style-type: decimal;
+  }
+
+  blockquote{
+    padding: 10px;
+    background: #dadada40;
+    font-style: italic;
+    color: rgba(0,0,0,0.8);
+  }
+
+  h1{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  h2{
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
+  }
+
+  h3{
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+  }
+
+  h4{
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+  }
+
+  a{
+    color: rgb(37 99 235);
+
+  }
+  a:hover{
+    text-decoration: underline;
+
+  }
+}

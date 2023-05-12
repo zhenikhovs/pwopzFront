@@ -1,4 +1,5 @@
-.course_structure{
+.block_link_content{
+
   ol {
     counter-reset: item;
     li{
@@ -12,4 +13,8 @@
     }
   }
 
+  ul li{
+    list-style-position: inside;
+    list-style-type: disc;
+  }
 }
