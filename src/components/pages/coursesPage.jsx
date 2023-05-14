@@ -1,5 +1,3 @@
-import {useEffect} from "react";
-import useCourseService from "../../services/courseService";
 import {useLoaderData} from "react-router-dom";
 import CourseCard from "../courses/courseCard";
 
@@ -21,7 +19,7 @@ const CoursesPage = () => {
         <div className={'flex flex-col gap-y-5'}>
             <h1 className={'text-3xl font-bold text-primary-800'}>Мои курсы</h1>
             <hr/>
-            <div className={'flex gap-x-4'}>{items}</div>
+            <div className={'grid grid-cols-4 gap-4'}>{items}</div>
 
         </div>
     )

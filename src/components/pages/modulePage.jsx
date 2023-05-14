@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {Link, useLoaderData} from "react-router-dom";
 import getBlockContent from "../moduleBlocks/moduleBlockController";
+import useModuleService from "../../services/moduleService";
 
 
 const ModulePage = () => {
@@ -9,14 +10,15 @@ const ModulePage = () => {
     let previousModuleId, nextModuleId;
     getAroundModules();
 
+
     let {blocks} = module_info;
+
 
     const moduleContent = renderModuleContent();
 
     function renderModuleContent() {
         if(blocks){
             blocks = JSON.parse(blocks).blocks;
-            console.log(blocks)
             return blocks.map(block =>{
                 return getBlockContent(block);
             })

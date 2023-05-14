@@ -19,5 +19,7 @@ export default function getBlockContent(block){
             return <BlockButtonLink buttonLink={block}/>;
         case "lists":
             return <BlockButtonList list={block}/>;
+        default:
+            return <div className={'m-[0 auto] justify-center w-max h-max bg-[#dadada80]'}>Контент блока не может быть отображён &#128546;</div>
     }
 }

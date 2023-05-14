@@ -64,24 +64,24 @@ const AppHeader = () => {
                         <Link to={'/'}>
                             Главная
                         </Link>
-                        <Link to={'/login'}>
-                            Логин
-                        </Link>
+                        {/*<Link to={'/login'}>*/}
+                        {/*    Логин*/}
+                        {/*</Link>*/}
                         <Link to={'/courses'}>
                             Курсы
                         </Link>
-                        {/*<Link to={'/test'}>*/}
-                        {/*    Тест*/}
-                        {/*</Link>*/}
+                        <Link to={'/tests'}>
+                            Тесты
+                        </Link>
                         {/*<Link to={'/test2'}>*/}
                         {/*    Тест2*/}
                         {/*</Link>*/}
                         {/*<Link to={'/test3'}>*/}
                         {/*    Тест3*/}
                         {/*</Link>*/}
-                        <Link to={'/lalalalalal'}>
-                            Страница ошибки
-                        </Link>
+                        {/*<Link to={'/lalalalalal'}>*/}
+                        {/*    Страница ошибки*/}
+                        {/*</Link>*/}
                     </Navbar.Collapse>
                 </> : null}
 

@@ -8,9 +8,11 @@ export async function ModuleLoader({params}) {
         module_id, course_id
     }
 
-    const {getModule} = useModuleService();
+    const {getModule, addModuleRead} = useModuleService();
+
 
     let moduleData = await getModule(data)
+        .then(await addModuleRead({course_id,module_id}))
         .catch(res => console.log(res));
 
     return {moduleData};

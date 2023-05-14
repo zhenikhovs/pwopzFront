@@ -3,7 +3,6 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import TestPage from "../test/testPage";
 import TestPage2 from "../test/testPage2";
 import LoginPage from "../pages/loginPage";
 import RootApp from "../appContainers/rootApp";
@@ -20,6 +19,10 @@ import {CourseLoader} from "../routerLoaders/courseLoader";
 import CoursePage from "../pages/coursePage";
 import ModulePage from "../pages/modulePage";
 import {ModuleLoader} from "../routerLoaders/moduleLoader";
+import TestsPage from "../pages/testsPage";
+import TestPage from "../pages/testPage";
+import {TestsLoader} from "../routerLoaders/testsLoader";
+import {TestLoader} from "../routerLoaders/testLoader";
 
 function App() {
 
@@ -48,8 +51,14 @@ function App() {
                     loader: ModuleLoader
                 },
                 {
-                    path: "test",
+                    path: "tests",
+                    element: <TestsPage />,
+                    loader: TestsLoader
+                },
+                {
+                    path: "tests/:id/:course_id",
                     element: <TestPage />,
+                    loader: TestLoader
                 },
                 {
                     path: "test2",
