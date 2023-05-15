@@ -1,5 +1,3 @@
-import {data} from "autoprefixer";
-
 const useTestService = () => {
     const getUserTests = async () => {
         let res = await fetch('http://pwopz.devaid.ru/api/Test.GetUserTests', {

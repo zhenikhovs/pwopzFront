@@ -11,7 +11,7 @@ import ErrorPage from "../pages/errorPage";
 import LoginApp from "../appContainers/loginApp";
 import {RootLoader} from "../routerLoaders/rootLoader";
 import ProfilePage from "../pages/profilePage";
-import ProfileStatistics from "../pages/profileStatisticPage";
+import ProfileStatistics from "../pages/statisticPage";
 import ProfileContainer from "../appContainers/profileContainer";
 import CoursesPage from "../pages/coursesPage";
 import {CoursesLoader} from "../routerLoaders/coursesLoader";
@@ -23,6 +23,9 @@ import TestsPage from "../pages/testsPage";
 import TestPage from "../pages/testPage";
 import {TestsLoader} from "../routerLoaders/testsLoader";
 import {TestLoader} from "../routerLoaders/testLoader";
+import RegistrationPage from "../pages/registrationPage";
+import HomePage from "../pages/homePage";
+import {StatisticsLoader} from "../routerLoaders/statisticsLoader";
 
 function App() {
 
@@ -33,7 +36,7 @@ function App() {
             children: [
                 {
                     path: "",
-                    element: <>Hello< />,
+                    element: <HomePage />,
                 },
                 {
                     path: "courses",
@@ -76,9 +79,16 @@ function App() {
                             path: "",
                             element: <ProfilePage />,
                         },
+                    ]
+                },
+                {
+                    path: 'statistics',
+                    element: <ProfileContainer />,
+                    children: [
                         {
-                            path: "statistics",
+                            path: "",
                             element: <ProfileStatistics />,
+                            loader: StatisticsLoader
                         },
                     ]
                 },
@@ -97,6 +107,16 @@ function App() {
                 {
                     path: "",
                     element: <LoginPage/>,
+                },
+            ]
+        },
+        {
+            path: "registration",
+            element: <LoginApp />,
+            children: [
+                {
+                    path: "",
+                    element: <RegistrationPage/>,
                 },
             ]
         },

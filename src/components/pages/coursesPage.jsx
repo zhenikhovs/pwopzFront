@@ -16,7 +16,7 @@ const CoursesPage = () => {
 
 
     return (
-        <div className={'flex flex-col gap-y-5'}>
+        <div className={'flex flex-col gap-y-8'}>
             <h1 className={'text-3xl font-bold text-primary-800'}>Мои курсы</h1>
             <hr/>
             <div className={'grid grid-cols-4 gap-4'}>{items}</div>

@@ -73,6 +73,9 @@ const AppHeader = () => {
                         <Link to={'/tests'}>
                             Тесты
                         </Link>
+                        <Link to={'/statistics'}>
+                            Статистика
+                        </Link>
                         {/*<Link to={'/test2'}>*/}
                         {/*    Тест2*/}
                         {/*</Link>*/}
