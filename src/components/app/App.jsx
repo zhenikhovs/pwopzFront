@@ -26,6 +26,9 @@ import {TestLoader} from "../routerLoaders/testLoader";
 import RegistrationPage from "../pages/registrationPage";
 import HomePage from "../pages/homePage";
 import {StatisticsLoader} from "../routerLoaders/statisticsLoader";
+import StatisticsContainer from "../appContainers/statisticsContainer";
+import StatisticsCoursesPage from "../pages/statisticsCoursesPage";
+import {StatisticsCoursesLoader} from "../routerLoaders/statisticsCoursesLoader";
 
 function App() {
 
@@ -79,20 +82,39 @@ function App() {
                             path: "",
                             element: <ProfilePage />,
                         },
-                    ]
-                },
-                {
-                    path: 'statistics',
-                    element: <ProfileContainer />,
-                    children: [
                         {
-                            path: "",
+                            path: 'statistics',
                             element: <ProfileStatistics />,
                             loader: StatisticsLoader
                         },
                     ]
                 },
+                {
+                    path: 'statistics',
+                    element: <StatisticsContainer />,
+                    children: [
+                        {
+                            path: '',
+                            element: <div>Страница статистики.</div>,
+                        },
+                        {
+                            path: 'courses',
+                            element: <StatisticsCoursesPage />,
+                            loader: StatisticsCoursesLoader
+                        },
+                        {
+                            path: 'users',
+                            element: <ProfileStatistics />,
+                            loader: StatisticsLoader
+                        },
+                        {
+                            path: 'groups',
+                            element: <ProfileStatistics />,
+                            loader: StatisticsLoader
+                        }
+                    ]
 
+                },
                 {
                     path: '*',
                     element: <ErrorPage/>,

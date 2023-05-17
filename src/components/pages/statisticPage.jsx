@@ -4,8 +4,6 @@ import {useLoaderData} from "react-router-dom";
 const ProfileStatistics = () => {
     const { user_courses_progress } = useLoaderData();
 
-    console.log(user_courses_progress);
-
     const progressBarsItems = renderProgressBars();
 
     function renderProgressBars(){

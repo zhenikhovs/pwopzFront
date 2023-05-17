@@ -1,12 +1,7 @@
-import { Menu } from 'primereact/menu';
 import {Link, Outlet} from "react-router-dom";
 
 const ProfileContainer = () => {
 
-    const menuItems = [
-        {label: 'New', icon: 'pi pi-fw pi-plus'},
-        {label: 'Delete', icon: 'pi pi-fw pi-trash'}
-    ]
     return(
         <div className={'flex gap-x-8'}>
             <aside
@@ -14,7 +9,7 @@ const ProfileContainer = () => {
                    aria-label="Sidebar">
 
                 <div
-                    className="mt-[64px] w-full text-gray-900 bg-white border border-gray-200 rounded-lg">
+                    className="mt-[64px] w-[220px] text-gray-900 bg-white border border-gray-200 rounded-lg">
                     <Link to={'/profile'}
                             className="text-gray-500 relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100">
                         <svg aria-hidden="true"

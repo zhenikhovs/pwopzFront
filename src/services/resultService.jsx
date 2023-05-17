@@ -1,6 +1,7 @@
 const useResultService = () => {
-    const getCoursesProgress = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetCoursesProgress', {
+
+    const getUserCoursesProgress = async () => {
+        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetUserCoursesProgress', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -8,7 +9,16 @@ const useResultService = () => {
         return res.result;
     }
 
-    return {getCoursesProgress}
+    const getStatisticsCourses = async () => {
+        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetStatisticsCourses', {
+            method: 'GET',
+        }).then(response => response.json());
+
+        if(res.status === 'error') throw await res.error_message;
+        return res.result;
+    }
+
+    return {getUserCoursesProgress, getStatisticsCourses}
 }
 
 export default useResultService;
