@@ -2,8 +2,10 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Skeleton } from 'primereact/skeleton';
 import {useLoaderData} from "react-router-dom";
-import {useState} from "react";
+import React, {useState} from "react";
 import { Dropdown } from 'primereact/dropdown';
+import {InputText} from "primereact/inputtext";
+import {FilterMatchMode} from "primereact/api";
 
 const StatisticsCoursesPage = () => {
     const { courses_progress } = useLoaderData();
@@ -16,6 +18,7 @@ const StatisticsCoursesPage = () => {
     });
 
     const [selectedCourse, setSelectedCourse] = useState('');
+
     let preparedDetailData = null ;
 
 
@@ -63,12 +66,11 @@ const StatisticsCoursesPage = () => {
             preparedDetailData = data;
 
             return course.modules.map(module =>
-                 <Column className={'w-[150px]'} field = {module.id} header = {module.name} sortable ></Column>
+                 <Column style={{ minWidth: '150px' }} field={module.id} header={module.name} sortable ></Column>
             )
         } return null;
 
     }
-
 
     const bodySkeleton = () => {
         return <Skeleton></Skeleton>
@@ -76,9 +78,54 @@ const StatisticsCoursesPage = () => {
 
     const skeletonItems = Array.from({ length: 5 }, (v, i) => i);
 
+    const [filtersCourses, setFiltersCourses] = useState({
+        global: {value: null, matchMode: FilterMatchMode.CONTAINS},
+    });
+    const onGlobalFilterCoursesChange = (e) => {
+        const value = e.target.value;
+        let _filters = { ...filtersCourses };
+
+        _filters['global'].value = value;
+
+        setFiltersCourses(_filters);
+    };
+    const renderCoursesHeader = () => {
+        return (
+            <div className="flex justify-end">
+                <span className="p-input-icon-left">
+                    <i className="pi pi-search" />
+                    <InputText value={filtersCourses.global.value} onChange={onGlobalFilterCoursesChange} placeholder="Поиск элемента" />
+                </span>
+            </div>
+        );
+    };
+    const coursesHeader = renderCoursesHeader();
+
+    const [filtersCourse, setFiltersCourse] = useState({
+        global: {value: null, matchMode: FilterMatchMode.CONTAINS},
+    });
+    const onGlobalFilterCourseChange = (e) => {
+        const value = e.target.value;
+        let _filters = { ...filtersCourse };
+
+        _filters['global'].value = value;
+
+        setFiltersCourse(_filters);
+    };
+    const renderCourseHeader = () => {
+        return (
+            <div className="flex justify-end">
+                <span className="p-input-icon-left">
+                    <i className="pi pi-search" />
+                    <InputText value={filtersCourse.global.value} onChange={onGlobalFilterCourseChange} placeholder="Поиск элемента" />
+                </span>
+            </div>
+        );
+    };
+    const courseHeader = renderCourseHeader();
 
     return (
-        <div className={'flex flex-col w-full gap-y-8 '}>
+        <div className={'flex flex-col gap-y-8'}>
             <div className={'font-bold text-3xl text-primary-800'}>
                  Статистика по курсам
             </div>
@@ -86,15 +133,15 @@ const StatisticsCoursesPage = () => {
             {
                 courses_progress.length > 0 ?
                     <>
-                        <DataTable className={'overflow-scroll'} value={courses_progress} removableSort tableStyle={{ minWidth: '50rem' }}>
-                            <Column className={'w-[150px]'} field="course_name" header="Курс" sortable ></Column>
-                            <Column className={'w-[150px]'} field="modules_count" header="Модули" sortable ></Column>
-                            <Column className={'w-[150px]'} field="all_users_count" header="Обучающиеся" sortable ></Column>
-                            <Column className={'w-[150px]'} field="individual_users_count" header="Индивидуально обучающиеся" sortable ></Column>
-                            <Column className={'w-[150px]'} field="user_from_groups_count" header="Обучающиеся из групп" sortable ></Column>
-                            <Column className={'w-[150px]'} field="groups_count" header="Группы" sortable ></Column>
-                            <Column className={'w-[150px]'} field="average_course_progress" header="Прохождение %" sortable ></Column>
-                            <Column className={'w-[150px]'} field="average_test_progress" header="Средний % теста" sortable ></Column>
+                        <DataTable emptyMessage="Результаты отсутствуют." value={courses_progress} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }} header={coursesHeader} filters={filtersCourses}>
+                            <Column style={{ minWidth: '150px' }} field="course_name" header="Курс" sortable ></Column>
+                            <Column className={''} field="modules_count" header="Модули" sortable ></Column>
+                            <Column className={''} field="all_users_count" header="Обучающиеся" sortable ></Column>
+                            <Column className={''} field="individual_users_count" header="Индивидуально обучающиеся" sortable ></Column>
+                            <Column className={''} field="user_from_groups_count" header="Обучающиеся из групп" sortable ></Column>
+                            <Column className={''} field="groups_count" header="Группы" sortable ></Column>
+                            <Column className={''} field="average_course_progress" header="Прохождение %" sortable ></Column>
+                            <Column className={''} field="average_test_progress" header="Средний % теста" sortable ></Column>
                         </DataTable>
 
 
@@ -107,11 +154,11 @@ const StatisticsCoursesPage = () => {
 
                             {
                                 selectedCourse !== ''?
-                                    <div className={'overflow-scroll '}>
-                                        <DataTable className={'w-max'} value={preparedDetailData} className="p-datatable-striped">
-                                            <Column className={'w-max'} field="user" header="Обучающийся" ></Column>
+                                    <div>
+                                        <DataTable emptyMessage="Результаты отсутствуют." className="p-datatable-striped" value={preparedDetailData} header={courseHeader} paginator rows={10} tableStyle={{ minWidth: '50rem' }} filters={filtersCourse} >
+                                            <Column sortable style={{ minWidth: '200px' }} field="user" header="Обучающийся" ></Column>
                                             {detailCourseTableInfo}
-                                            <Column field="test" header="Результат теста" ></Column>
+                                            <Column sortable field="test" header="Результат теста" ></Column>
                                         </DataTable>
                                     </div>
                                     :  <>
@@ -127,13 +174,9 @@ const StatisticsCoursesPage = () => {
                         </div>
 
                     </>
-
-
                 :
                 <div className={'text-xl flex items-center justify-center h-[100px] bg-[#dadada80]'}>Курсы отсутствуют</div>
-
             }
-
         </div>
 
     )

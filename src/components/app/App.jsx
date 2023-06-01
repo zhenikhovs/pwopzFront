@@ -29,6 +29,8 @@ import {StatisticsLoader} from "../routerLoaders/statisticsLoader";
 import StatisticsContainer from "../appContainers/statisticsContainer";
 import StatisticsCoursesPage from "../pages/statisticsCoursesPage";
 import {StatisticsCoursesLoader} from "../routerLoaders/statisticsCoursesLoader";
+import {StatisticsGroupsLoader} from "../routerLoaders/statisticsGroupsLoader";
+import StatisticsGroupsPage from "../pages/statisticsGroupsPage";
 
 function App() {
 
@@ -109,8 +111,8 @@ function App() {
                         },
                         {
                             path: 'groups',
-                            element: <ProfileStatistics />,
-                            loader: StatisticsLoader
+                            element: <StatisticsGroupsPage />,
+                            loader: StatisticsGroupsLoader
                         }
                     ]
 
