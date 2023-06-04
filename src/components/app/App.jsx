@@ -31,6 +31,8 @@ import StatisticsCoursesPage from "../pages/statisticsCoursesPage";
 import {StatisticsCoursesLoader} from "../routerLoaders/statisticsCoursesLoader";
 import {StatisticsGroupsLoader} from "../routerLoaders/statisticsGroupsLoader";
 import StatisticsGroupsPage from "../pages/statisticsGroupsPage";
+import {StatisticsUsersLoader} from "../routerLoaders/statisticsUsersLoader";
+import StatisticsUsersPage from "../pages/statisticsUsersPage";
 
 function App() {
 
@@ -106,8 +108,8 @@ function App() {
                         },
                         {
                             path: 'users',
-                            element: <ProfileStatistics />,
-                            loader: StatisticsLoader
+                            element: <StatisticsUsersPage />,
+                            loader: StatisticsUsersLoader
                         },
                         {
                             path: 'groups',

@@ -27,7 +27,16 @@ const useResultService = () => {
         return res.result;
     }
 
-    return {getUserCoursesProgress, getStatisticsCourses, getStatisticsGroups}
+    const getStatisticsUsers = async () => {
+        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetStatisticsUsers', {
+            method: 'GET',
+        }).then(response => response.json());
+
+        if(res.status === 'error') throw await res.error_message;
+        return res.result;
+    }
+
+    return {getUserCoursesProgress, getStatisticsCourses, getStatisticsGroups, getStatisticsUsers}
 }
 
 export default useResultService;
