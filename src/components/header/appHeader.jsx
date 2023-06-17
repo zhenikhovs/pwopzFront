@@ -82,9 +82,9 @@ const AppHeader = () => {
                                 </Link> : null
                         }
 
-                        <Link to={'/test2'}>
-                            Тест2
-                        </Link>
+                        {/*<Link to={'/test2'}>*/}
+                        {/*    Тест2*/}
+                        {/*</Link>*/}
                         {/*<Link to={'/test3'}>*/}
                         {/*    Тест3*/}
                         {/*</Link>*/}

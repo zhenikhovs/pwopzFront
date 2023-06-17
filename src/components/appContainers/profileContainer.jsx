@@ -3,13 +3,13 @@ import {Link, Outlet} from "react-router-dom";
 const ProfileContainer = () => {
 
     return(
-        <div className={'flex gap-x-8'}>
+        <div className={'flex flex-col lg:flex-row gap-8'}>
             <aside
-                   className="w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
+                   className="h-full w-full lg:w-[20%] transition-transform -translate-x-full sm:translate-x-0"
                    aria-label="Sidebar">
 
                 <div
-                    className="mt-[64px] w-[220px] text-gray-900 bg-white border border-gray-200 rounded-lg">
+                    className="lg:mt-[64px] w-[220px] text-gray-900 bg-white border border-gray-200 rounded-lg">
                     <Link to={'/profile'}
                             className="text-gray-500 relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100">
                         <svg aria-hidden="true"

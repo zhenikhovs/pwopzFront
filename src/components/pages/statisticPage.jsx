@@ -24,7 +24,7 @@ const ProfileStatistics = () => {
 
             return <div className={'flex flex-col gap-y-4'}>
                 <div className={'text-xl'}>{courses_progress.course_name}</div>
-                <div className="grid gap-x-8 grid-cols-2">
+                <div className="grid  grid-cols-1 gap-y-2 md:gap-x-8 md:grid-cols-2">
                     <div className={'flex flex-col gap-y-2'}>
                         <div className={'text-lg text-gray-500'}>Процент прохождения курса:</div>
                         <ProgressBar className={''} value={percent}/>
@@ -69,7 +69,7 @@ const ProfileStatistics = () => {
                 Личная статистика
             </div>
             <hr/>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col gap-y-8 md:gap-y-4">
                 {progressBarsItems}
             </div>
 

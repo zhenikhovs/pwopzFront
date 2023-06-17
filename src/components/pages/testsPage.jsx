@@ -54,7 +54,7 @@ const TestsPage = () => {
                         <div className="absolute right-0 text-xl text-primary-700">Назначенные тесты</div>
                     </div>
                     <hr/>
-                    <div className={'flex gap-x-4'}>{testCards}</div>
+                    <div className={'grid grid-cols-1 md:grid-cols-2 lg: lg:grid-cols-3 xl:grid-cols-4 gap-4'}>{testCards}</div>
                 </>: null
             }
 
@@ -64,7 +64,7 @@ const TestsPage = () => {
                 <div className="absolute right-0 text-xl text-primary-700">Пройденные тесты</div>
             </div>
             <hr/>
-            <div className={'flex gap-x-4'}>{doneTestCards}</div>
+            <div className={'grid grid-cols-1 md:grid-cols-2 lg: lg:grid-cols-3 xl:grid-cols-4 gap-4'}>{doneTestCards}</div>
                 </>: null
             }
         </div>

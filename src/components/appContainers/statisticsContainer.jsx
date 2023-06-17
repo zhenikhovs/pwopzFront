@@ -3,9 +3,9 @@ import {Link, Outlet} from "react-router-dom";
 const StatisticsContainer = () => {
 
     return(
-        <div className={'flex gap-x-8'}>
+        <div className={'flex flex-col lg:flex-row gap-8'}>
             <aside
-                   className="h-full w-[20%] transition-transform -translate-x-full sm:translate-x-0"
+                   className="h-full w-full lg:w-[20%] transition-transform -translate-x-full sm:translate-x-0"
                    aria-label="Sidebar">
 
                 <div
@@ -40,7 +40,7 @@ const StatisticsContainer = () => {
                     </Link>
                    </div>
             </aside>
-            <div className={'w-[80%]'}>
+            <div className={'w-full lg:w-[80%]'}>
                 <Outlet/>
             </div>
         </div>

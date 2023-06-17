@@ -59,17 +59,17 @@ const ModulePage = () => {
     return (
         <div className={'flex flex-col gap-y-8'}>
             <h1 className={'text-3xl font-bold text-primary-800'}>{module_info.name}</h1>
-            <div className="relative">
+            <div className="relative text-base md:text-xl">
                     {
                         previousModuleId?
-                            <Link to={'../'+previousModuleId} relative="path" className="absolute left-0 text-xl text-primary-700">
+                            <Link to={'../'+previousModuleId} relative="path" className="absolute left-0  text-primary-700">
                                 Предыдущий модуль
                             </Link> :
                             null
                     }
                     {
                         nextModuleId?
-                            <Link to={'../'+nextModuleId} relative="path" className="absolute right-0 text-xl text-primary-700">
+                            <Link to={'../'+nextModuleId} relative="path" className="absolute right-0 text-primary-700">
                                 Следующий модуль
                             </Link> :
                             null

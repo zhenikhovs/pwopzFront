@@ -124,7 +124,7 @@ const StatisticsGroupsPage = () => {
 
 
             <div className="flex flex-col gap-y-4 mt-8">
-                <div className="flex items-baseline gap-x-4 font-bold text-2xl whitespace-nowrap">
+                <div className="flex flex-col lg:flex-row items-baseline gap-4 font-bold text-2xl whitespace-nowrap">
                     Детальная статистика группы:
                     <Dropdown value={selectedGroup} onChange={(e) => setSelectedGroup(e.value)} options={groups_names} optionLabel="name"
                               placeholder="Выберите группу" className="w-full md:w-14rem" />

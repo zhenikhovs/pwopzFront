@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import { Dropdown } from 'primereact/dropdown';
 import {InputText} from "primereact/inputtext";
 import {FilterMatchMode} from "primereact/api";
+import { Button } from 'primereact/button';
 
 const StatisticsCoursesPage = () => {
     const { courses_progress } = useLoaderData();
@@ -16,6 +17,8 @@ const StatisticsCoursesPage = () => {
             code: course_progress.id
         }
     });
+
+    const paginatorRight = <Button type="button" icon="pi pi-download" text />;
 
     const [selectedCourse, setSelectedCourse] = useState('');
 
@@ -133,7 +136,7 @@ const StatisticsCoursesPage = () => {
             {
                 courses_progress.length > 0 ?
                     <>
-                        <DataTable emptyMessage="Результаты отсутствуют." value={courses_progress} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }} header={coursesHeader} filters={filtersCourses}>
+                        <DataTable emptyMessage="Результаты отсутствуют." value={courses_progress} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }} header={coursesHeader} filters={filtersCourses} paginatorRight={paginatorRight}>
                             <Column style={{ minWidth: '150px' }} field="course_name" header="Курс" sortable ></Column>
                             <Column className={''} field="modules_count" header="Модули" sortable ></Column>
                             <Column className={''} field="all_users_count" header="Обучающиеся" sortable ></Column>
@@ -146,7 +149,7 @@ const StatisticsCoursesPage = () => {
 
 
                         <div className="flex flex-col gap-y-4 mt-8">
-                            <div className="flex items-baseline gap-x-4 font-bold text-xl whitespace-nowrap">
+                            <div className="flex flex-col lg:flex-row items-baseline gap-4 font-bold text-xl whitespace-nowrap">
                                 Детальная статистика по курсу:
                                 <Dropdown value={selectedCourse} onChange={(e) => setSelectedCourse(e.value)} options={course_names} optionLabel="name"
                                           placeholder="Выберите курс" className="w-full md:w-14rem" />

@@ -33,6 +33,7 @@ import {StatisticsGroupsLoader} from "../routerLoaders/statisticsGroupsLoader";
 import StatisticsGroupsPage from "../pages/statisticsGroupsPage";
 import {StatisticsUsersLoader} from "../routerLoaders/statisticsUsersLoader";
 import StatisticsUsersPage from "../pages/statisticsUsersPage";
+import StatisticMainStatistics from "../pages/statisticMainPage";
 
 function App() {
 
@@ -99,7 +100,7 @@ function App() {
                     children: [
                         {
                             path: '',
-                            element: <div>Страница статистики.</div>,
+                            element: <StatisticMainStatistics />,
                         },
                         {
                             path: 'courses',

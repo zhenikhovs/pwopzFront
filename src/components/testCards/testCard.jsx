@@ -4,7 +4,7 @@ const TestCard = ({test}) => {
     const {course_id, course_name, test_id, test_name} = test;
     return (
         <div
-            className="flex flex-col justify-between w-1/4 min-w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow">
+            className="flex flex-col justify-between min-w-[300px] p-6 bg-white border border-gray-200 rounded-lg shadow">
             <Link to={test_id+'/'+course_id}>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{test_name}</h5>
             </Link>
