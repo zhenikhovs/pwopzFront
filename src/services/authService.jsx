@@ -1,6 +1,6 @@
 const useAuthService = () => {
     const logIn = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.Login', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Auth.Login', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
@@ -10,7 +10,7 @@ const useAuthService = () => {
     }
 
     const registration = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.Registration', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Auth.Registration', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
@@ -20,7 +20,7 @@ const useAuthService = () => {
     }
 
     const logOut = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Auth.Logout', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Auth.Logout', {
             method: 'GET'
         }).then(response => response.json());
 

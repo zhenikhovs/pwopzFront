@@ -1,6 +1,6 @@
 const useCourseService = () => {
     const getUserCourses = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Course.GetUserCourses', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Course.GetUserCourses', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -13,7 +13,7 @@ const useCourseService = () => {
             course_id
         }
 
-        let res = await fetch('http://pwopz.devaid.ru/api/Course.GetCourse', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Course.GetCourse', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());

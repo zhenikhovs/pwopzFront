@@ -49,7 +49,7 @@ const AppHeader = () => {
                             {
                                 user?
                                     <Dropdown.Item onClick={logOutClick}>
-                                        Sign out
+                                        Выйти
                                     </Dropdown.Item>
                                     : null
                             }

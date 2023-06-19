@@ -1,6 +1,6 @@
 const useTestService = () => {
     const getUserTests = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Test.GetUserTests', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Test.GetUserTests', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -9,7 +9,7 @@ const useTestService = () => {
     }
 
     const getTest = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Test.GetTest', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Test.GetTest', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
@@ -19,7 +19,7 @@ const useTestService = () => {
     }
 
     const sendTestResults = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Test.AddDoneTest', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Test.AddDoneTest', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());

@@ -1,6 +1,6 @@
 const useUserService = () => {
     const getUser = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/User.GetUser', {
+        let res = await fetch('http://edu.legacystudio.ru/api/User.GetUser', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -9,7 +9,7 @@ const useUserService = () => {
     }
 
     const updateUser = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/User.UpdateUser', {
+        let res = await fetch('http://edu.legacystudio.ru/api/User.UpdateUser', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
@@ -19,7 +19,7 @@ const useUserService = () => {
     }
 
     const updateUserPassword = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/User.UpdateUserPassword', {
+        let res = await fetch('http://edu.legacystudio.ru/api/User.UpdateUserPassword', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());

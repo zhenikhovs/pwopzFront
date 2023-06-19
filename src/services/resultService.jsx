@@ -1,7 +1,7 @@
 const useResultService = () => {
 
     const getUserCoursesProgress = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetUserCoursesProgress', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Result.GetUserCoursesProgress', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -10,7 +10,7 @@ const useResultService = () => {
     }
 
     const getStatisticsCourses = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetStatisticsCourses', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Result.GetStatisticsCourses', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -19,7 +19,7 @@ const useResultService = () => {
     }
 
     const getStatisticsGroups = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetStatisticsGroups', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Result.GetStatisticsGroups', {
             method: 'GET',
         }).then(response => response.json());
 
@@ -28,7 +28,7 @@ const useResultService = () => {
     }
 
     const getStatisticsUsers = async () => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Result.GetStatisticsUsers', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Result.GetStatisticsUsers', {
             method: 'GET',
         }).then(response => response.json());
 

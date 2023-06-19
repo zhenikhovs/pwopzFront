@@ -9,10 +9,13 @@ import useAuthService from "../../services/authService";
 import {useLocation, useNavigate} from "react-router-dom";
 
 const RegistrationPage = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailFromParams = urlParams.get('email');
+
     const [login, setLogin] = useState('');
     const [name, setName] = useState('');
     const [last_name, setLast_name] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(emailFromParams);
     const [password, setPassword] = useState('');
     const [confirm_password, setConfirm_password] = useState('');
 
@@ -31,7 +34,7 @@ const RegistrationPage = () => {
     const registrationClick = async (e) => {
         e.preventDefault();
 
-        let dealid = (new URL(document.location)).searchParams.get("dealid");
+        let dealid = urlParams.get("dealid");
 
         let data = {
             login,
@@ -80,7 +83,7 @@ const RegistrationPage = () => {
                                        onChange={e => setLast_name(e.target.value)}/>
                             <InputAuth inputLabel={'Почта'} inputName={'email'} inputType={'text'}
                                        value={email}
-                                       onChange={e => setEmail(e.target.value)}/>
+                                       onChange={e => setEmail(e.target.value)} disabled={true}/>
                             <InputAuth inputLabel={'Пароль'} inputName={'password'} inputType={'password'}
                                        value={password}
                                        onChange={e => setPassword(e.target.value)}/>

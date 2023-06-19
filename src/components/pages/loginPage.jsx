@@ -50,7 +50,7 @@ const LoginPage = () => {
         <>
             <div className="flex w-full h-screen justify-center items-center ">
                 <div className="w-[500px]  p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 relative">
-                    <Button className={'absolute top-0 right-0'} onClick={insertClick}>Testik</Button>
+                    <Button className={'absolute top-0 right-0'} onClick={insertClick}>Сергей Женихов</Button>
 
                     <div
                         className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">

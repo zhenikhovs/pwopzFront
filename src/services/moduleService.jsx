@@ -1,6 +1,6 @@
 const useModuleService = () => {
     const getModule = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Module.GetModule', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Module.GetModule', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
@@ -10,7 +10,7 @@ const useModuleService = () => {
     }
 
     const addModuleRead = async (data) => {
-        let res = await fetch('http://pwopz.devaid.ru/api/Module.AddReadModule', {
+        let res = await fetch('http://edu.legacystudio.ru/api/Module.AddReadModule', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then(response => response.json());
