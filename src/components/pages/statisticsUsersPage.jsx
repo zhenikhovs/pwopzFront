@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import { Dropdown } from 'primereact/dropdown';
 import {InputText} from "primereact/inputtext";
 import {FilterMatchMode} from "primereact/api";
+import {Button} from "primereact/button";
 
 const StatisticsUsersPage = () => {
     const { users_progress } = useLoaderData();
@@ -72,13 +73,111 @@ const StatisticsUsersPage = () => {
     };
     const detailUserHeader = renderDetailUserHeader();
 
+    const exportExcel = () => {
+        import('xlsx').then((xlsx) => {
+            const dataForExcel = users_courses.map(data => {
+                const structure = {};
+                Object.keys(data).forEach(dataKey => {
+                    if (typeof (data[dataKey]) !== 'object')
+                        structure[dataKey] = data[dataKey]
+                })
+                return structure;
+            });
+            const worksheet = xlsx.utils.json_to_sheet(dataForExcel);
+            const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+            const excelBuffer = xlsx.write(workbook, {
+                bookType: 'xlsx',
+                type: 'array',
+            });
+
+            saveAsExcelFile(excelBuffer, 'users_progress');
+        });
+    };
+
+    const saveAsExcelFile = (buffer, fileName) => {
+        import('file-saver').then((module) => {
+            if (module && module.default) {
+                let EXCEL_TYPE =
+                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+                let EXCEL_EXTENSION = '.xlsx';
+                const data = new Blob([buffer], {
+                    type: EXCEL_TYPE,
+                });
+
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = now.getMonth();
+                const day = now.getDate();
+
+                const hour = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+
+                module.default.saveAs(
+                    data,
+                    fileName + ' ' + hour +':'+ minutes +':'+ seconds + ' ' + day +'.'+ month +'.'+ year + EXCEL_EXTENSION
+                );
+            }
+        });
+    };
+
+
+    const exportExcelDetail = () => {
+        import('xlsx').then((xlsx) => {
+            const worksheet = xlsx.utils.json_to_sheet(users_detail_courses[selectedUser.code]);
+            const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+            const excelBuffer = xlsx.write(workbook, {
+                bookType: 'xlsx',
+                type: 'array',
+            });
+
+            saveAsExcelFileDetail(excelBuffer, 'detail_user_progress');
+        });
+    };
+
+    const saveAsExcelFileDetail = (buffer, fileName) => {
+        import('file-saver').then((module) => {
+            if (module && module.default) {
+                let EXCEL_TYPE =
+                    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+                let EXCEL_EXTENSION = '.xlsx';
+                const data = new Blob([buffer], {
+                    type: EXCEL_TYPE,
+                });
+
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = now.getMonth();
+                const day = now.getDate();
+
+                const hour = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+
+                module.default.saveAs(
+                    data,
+                    fileName + ' ' + hour +':'+ minutes +':'+ seconds + ' ' + day +'.'+ month +'.'+ year + EXCEL_EXTENSION
+                );
+            }
+        });
+    };
+
+    const paginatorRight = () => {
+        return <Button type="button" onClick={exportExcel} icon="pi pi-download" text />
+    }
+
+    const paginatorRightDetail = () => {
+        return <Button type="button" onClick={exportExcelDetail} icon="pi pi-download" text />
+    }
+
+
     return (
         <div className={'flex flex-col gap-y-8'}>
             <div className={'font-bold text-3xl text-primary-800'}>
                  Статистика по обучающимся
             </div>
             <hr/>
-            <DataTable header={usersHeader} filters={filtersUsers} emptyMessage="Результаты отсутствуют." value={users_courses} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }}>
+            <DataTable header={usersHeader} filters={filtersUsers} emptyMessage="Результаты отсутствуют." value={users_courses} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }} paginatorRight={paginatorRight}>
                 <Column style={{ minWidth: '150px' }} field="user_fio" header="Обучающийся" sortable ></Column>
                 <Column className={''} field="course_count" header="Количество курсов" sortable ></Column>
                 <Column className={''} field="course_modules_progress" header="% изучения курсов" sortable ></Column>
@@ -95,7 +194,7 @@ const StatisticsUsersPage = () => {
 
                 {
                     selectedUser !== ''?
-                        <DataTable header={detailUserHeader} filters={filtersDetailUser} emptyMessage="Результаты отсутствуют." value={users_detail_courses[selectedUser.code]} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }}>
+                        <DataTable paginatorRight={paginatorRightDetail}  header={detailUserHeader} filters={filtersDetailUser} emptyMessage="Результаты отсутствуют." value={users_detail_courses[selectedUser.code]} removableSort  paginator rows={10} tableStyle={{ minWidth: '50rem' }}>
                             <Column style={{ minWidth: '150px' }} field="course_name" header="Курс" sortable ></Column>
                             <Column className={''} field="modules_count" header="Количество модулей" sortable ></Column>
                             <Column className={''} field="course_progress" header="% изучения курсов" sortable ></Column>

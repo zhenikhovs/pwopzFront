@@ -117,7 +117,15 @@ const StatisticsCoursesPage = () => {
 
     const exportExcel = () => {
         import('xlsx').then((xlsx) => {
-            const worksheet = xlsx.utils.json_to_sheet(courses_progress);
+            const dataForExcel = courses_progress.map(data => {
+                const structure = {};
+                Object.keys(data).forEach(dataKey => {
+                    if (typeof (data[dataKey]) !== 'object')
+                        structure[dataKey] = data[dataKey]
+                })
+                return structure;
+            });
+            const worksheet = xlsx.utils.json_to_sheet(dataForExcel);
             const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
             const excelBuffer = xlsx.write(workbook, {
                 bookType: 'xlsx',
